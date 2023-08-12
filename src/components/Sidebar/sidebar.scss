@@ -1,0 +1,21 @@
+.sidebar {
+  @apply fixed lg:relative flex flex-col justify-between bg-second min-w-[300px] h-full lg:h-[100vh] px-[8px];
+  .sidebar-main {
+    .sidebar-header {
+      @apply flex justify-center items-center gap-[10px] py-[24px];
+      >img:last-child {
+        @apply h-[20px];
+      }
+    }
+    .create-chat-ticket {
+      @apply flex items-center w-full gap-[10px];
+      > div {
+        font-family: Inter;
+        @apply flex items-center gap-[12px] w-full border-[1px] border-[#D4D4D4] rounded-[8px] p-[9px_17px_11px];
+      }
+    }
+  }
+  .sidebar-footer {
+    @apply flex justify-center py-[20px];
+  }
+}

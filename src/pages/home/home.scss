@@ -1,0 +1,62 @@
+.home {
+  @apply flex bg-primary w-full h-full min-h-[100vh] relative;
+  .hamburger-container {
+    @apply cursor-pointer absolute top-[20px] left-[20px];
+  }
+  .home-main {
+    @apply flex flex-col items-center justify-between gap-[50px] w-full pt-[120px] pb-[24px] px-[20px];
+    .assist-section {
+      @apply flex flex-col gap-[40px];
+      h1 {
+        font-family: Lexend;
+        @apply flex flex-col text-[32px] sm:text-[40px] md:text-[48px] lg:text-[60px] font-[600] text-center;
+        span:last-child {
+          background: linear-gradient(135deg, #FFE4E6 0%, #D1FAE5 50%, #BAE6FD 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .option-container {
+        font-family: Inter;
+        @apply flex flex-col gap-[16px];
+        > p {
+          @apply text-white/[0.8] text-[14px] font-[600];
+        }
+
+        .option-group {
+          @apply flex flex-wrap gap-[12px] max-w-[500px];
+          > div {
+            @apply bg-second rounded-full p-[7px_16px_9px] text-[#E2E8F0] text-[14px] font-[400] w-max;
+          }
+        }
+      }
+    }
+
+    .sender-section {
+      @apply flex flex-col items-center gap-[20px];
+      .prompt-options {
+        font-family: Inter;
+        box-shadow: 0px 8px 10px -6px rgba(0, 0, 0, 0.10), 0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 0px 0px 1px rgba(241, 245, 249, 0.10);
+        @apply flex gap-[10px] sm:gap-[24px] bg-[#1d2739] rounded-full p-[7px_18px_9px] sm:p-[7px_24px_9px] text-[12px] sm:text-[14px] font-[500] w-max;
+        > div {
+          @apply cursor-pointer;
+        }
+      }
+
+      .input-container {
+        @apply flex items-center gap-[14px] w-full;
+        .input-form {
+          box-shadow: 0px 0px 0px 2px #1E3A8A;
+          @apply flex justify-between items-center gap-[10px] bg-[#060B1A] rounded-[32px] p-[10px_16px_12px]
+          w-full sm:w-[500px] md:w-[680px];
+          input {
+            font-family: Inter;
+            @apply bg-transparent border-none outline-none text-white w-full;
+          }
+        }
+      }
+    }
+  }
+}
