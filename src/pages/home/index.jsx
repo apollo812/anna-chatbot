@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../../components/Sidebar';
 import Icons from '../../components/Icons';
 import './home.scss';
+import LanguageSelect from '../../components/LanguageSelect';
 
 const options = [
   'Help me write a blog post',
@@ -57,10 +58,13 @@ const Home = () => {
         </div>
       )}
       <div className="home-main">
+        <div className="fixed right-40 top-20 w-120">
+          <LanguageSelect />
+        </div>
         <div className="assist-section">
           <h1>
-            <span className="text-[#E2E8F0]">ChatGPT for</span>
-            <span className="text-[#E2E8F0]">Everybody</span>
+            <span className="text-[#E2E8F0]">Chat met</span>
+            <span className="text-[#E2E8F0]">Azull</span>
           </h1>
           <div className="option-container">
             <p>Or try asking one of these questions:</p>
