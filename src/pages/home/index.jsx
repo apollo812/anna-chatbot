@@ -3,6 +3,7 @@ import Sidebar from '../../components/Sidebar';
 import Icons from '../../components/Icons';
 import './home.scss';
 import LanguageSelect from '../../components/LanguageSelect';
+import { useTranslation } from 'react-i18next';
 
 const options = [
   'Help me write a blog post',
@@ -15,18 +16,11 @@ const options = [
 ];
 
 const Home = () => {
+  const { t } = useTranslation();
   const [prompts, setPrompts] = React.useState([
     {
       label: 'Model: gpt-3.5-turbo',
       active: true
-    },
-    {
-      label: 'Character',
-      active: false
-    },
-    {
-      label: 'Prompt',
-      active: false
     },
     {
       label: 'New Chat',
@@ -63,14 +57,14 @@ const Home = () => {
         </div>
         <div className="assist-section">
           <h1>
-            <span className="text-[#E2E8F0]">Chat met</span>
-            <span className="text-[#E2E8F0]">Azull</span>
+            <span className="text-[#E2E8F0]">{t('Chat with')}</span>
+            <span className="text-[#E2E8F0]">{t('Azull')}</span>
           </h1>
           <div className="option-container">
-            <p>Or try asking one of these questions:</p>
+            <p>{t('or_try_asking')}</p>
             <div className="option-group">
               {options.map((item, ind) => {
-                return <div key={ind}>{item}</div>;
+                return <div key={ind}>{t(`option${ind}`)}</div>;
               })}
             </div>
           </div>
@@ -90,7 +84,7 @@ const Home = () => {
                     setPrompts(data);
                   }}
                 >
-                  {item.label}
+                  {t(`${item.label}`)}
                 </div>
               );
             })}
