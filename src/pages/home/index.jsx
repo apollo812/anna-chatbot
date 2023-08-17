@@ -4,6 +4,7 @@ import Icons from '../../components/Icons';
 import './home.scss';
 import LanguageSelect from '../../components/LanguageSelect';
 import { useTranslation } from 'react-i18next';
+import DarkMode from '../../components/DarkMode';
 
 const options = [
   'Help me write a blog post',
@@ -52,7 +53,8 @@ const Home = () => {
         </div>
       )} */}
       <div className="home-main">
-        <div className="fixed right-40 top-20 w-120">
+        <div className="fixed right-40 top-20 w-240 flex">
+          <DarkMode />
           <LanguageSelect />
         </div>
         <div className="assist-section">
