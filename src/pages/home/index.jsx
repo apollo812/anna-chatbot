@@ -17,40 +17,40 @@ const options = [
 
 const Home = () => {
   const { t } = useTranslation();
-  const [prompts, setPrompts] = React.useState([
-    {
-      label: 'Model: gpt-3.5-turbo',
-      active: true
-    },
-    {
-      label: 'New Chat',
-      active: false
-    }
-  ]);
-  const [sidebarOpen, setSidebarOpen] = React.useState(true);
+  // const [prompts, setPrompts] = React.useState([
+  //   {
+  //     label: 'Model: gpt-3.5-turbo',
+  //     active: true
+  //   },
+  //   {
+  //     label: 'New Chat',
+  //     active: false
+  //   }
+  // ]);
+  // const [sidebarOpen, setSidebarOpen] = React.useState(true);
 
-  const getWidth = () => {
-    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  };
+  // const getWidth = () => {
+  //   return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  // };
 
   React.useEffect(() => {
-    const setResponsiveness = () => {
-      getWidth() < 1024 ? setSidebarOpen(false) : setSidebarOpen(true);
-    };
-    setResponsiveness();
-    window.addEventListener('resize', setResponsiveness);
+    // const setResponsiveness = () => {
+    //   getWidth() < 1024 ? setSidebarOpen(false) : setSidebarOpen(true);
+    // };
+    // setResponsiveness();
+    // window.addEventListener('resize', setResponsiveness);
     // eslint-disable-next-line
   }, []);
 
   return (
     <div className="home">
-      {sidebarOpen ? (
+      {/* {sidebarOpen ? (
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
       ) : (
         <div className="hamburger-container" onClick={() => setSidebarOpen(true)}>
           <Icons icon="Hamburger" size={30} fill="white" />
         </div>
-      )}
+      )} */}
       <div className="home-main">
         <div className="fixed right-40 top-20 w-120">
           <LanguageSelect />
@@ -70,7 +70,7 @@ const Home = () => {
           </div>
         </div>
         <div className="sender-section">
-          <div className="prompt-options">
+          {/* <div className="prompt-options">
             {prompts.map((item, ind) => {
               return (
                 <div
@@ -88,7 +88,7 @@ const Home = () => {
                 </div>
               );
             })}
-          </div>
+          </div> */}
           <div className="input-container">
             <Icons icon="User" size={24} />
             <div className="input-form">

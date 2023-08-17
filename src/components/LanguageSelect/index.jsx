@@ -31,7 +31,8 @@ function LanguageSelect() {
     { value: 'du', lang: 'Dutch' },
     { value: 'en', lang: 'English' },
     { value: 'fr', lang: 'French' },
-    { value: 'sp', lang: 'Spanish' }
+    { value: 'sp', lang: 'Spanish' },
+    { value: 'po', lang: 'Poland' }
   ];
   const { i18n } = useTranslation();
 
