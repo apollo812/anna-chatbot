@@ -5,6 +5,7 @@ import './home.scss';
 import LanguageSelect from '../../components/LanguageSelect';
 import { useTranslation } from 'react-i18next';
 import DarkMode from '../../components/DarkMode';
+import { useSelector } from 'react-redux';
 
 const options = [
   'Help me write a blog post',
@@ -17,6 +18,7 @@ const options = [
 ];
 
 const Home = () => {
+  const { globalState } = useSelector((state) => state);
   const { t } = useTranslation();
   // const [prompts, setPrompts] = React.useState([
   //   {
@@ -43,6 +45,16 @@ const Home = () => {
     // eslint-disable-next-line
   }, []);
 
+  const [mode, setMode] = React.useState(globalState.mode);
+
+  React.useEffect(() => {
+    setMode(globalState.mode);
+  }, []);
+
+  React.useEffect(() => {
+    setMode(globalState.mode);
+  }, [globalState.mode]);
+
   return (
     <div className="home">
       {/* {sidebarOpen ? (
@@ -59,11 +71,11 @@ const Home = () => {
         </div>
         <div className="assist-section">
           <h1>
-            <span className="text-[#E2E8F0]">{t('Chat with')}</span>
-            <span className="text-[#E2E8F0]">{t('Azull')}</span>
+            <span className="dark:text-[#E2E8F0] text-black">{t('Chat with')}</span>
+            <span className="dark:text-[#70c9df] text-[#205866]">{t('Azull')}</span>
           </h1>
           <div className="option-container">
-            <p>{t('or_try_asking')}</p>
+            <p className="!text-black dark:!text-[#E2E8F0] ">{t('or_try_asking')}</p>
             <div className="option-group">
               {options.map((item, ind) => {
                 return <div key={ind}>{t(`option${ind}`)}</div>;
@@ -95,7 +107,7 @@ const Home = () => {
             <Icons icon="User" size={24} />
             <div className="input-form">
               <input type="text" />
-              <Icons icon="Send" size={18} />
+              <Icons icon={mode == 'dark' ? 'Send' : 'Send_Dark'} size={18} />
             </div>
           </div>
         </div>

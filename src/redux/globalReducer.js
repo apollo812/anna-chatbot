@@ -8,6 +8,8 @@ export const globalSlice = createSlice({
         setLanguageState: false,
         setLoadingState: false,
         loading: false,
+        mode: "dark",
+        setModeState: false
     },
     reducers: {
         setLanguageRequest: state => {
@@ -29,6 +31,16 @@ export const globalSlice = createSlice({
         },
         setLoadingFailed: (state, action) => {
             state.setLoadingState = false;
+        },
+        setModeRequest: state => {
+            state.setModeState = true
+        },
+        setModeSuccess: (state, action) => {
+            state.setModeState = false;
+            state.mode = action.payload;
+        },
+        setModeFailed: (state, action) => {
+            state.setModeState = false;
         }
     }
 });
@@ -36,6 +48,7 @@ export const globalSlice = createSlice({
 const {
     setLanguageFailed, setLanguageRequest, setLanguageSuccess,
     setLoadingFailed, setLoadingRequest, setLoadingSuccess,
+    setModeFailed, setModeRequest, setModeSuccess
 } = globalSlice.actions;
 
 export const setCurrentLanguage = (lang) => async (dispatch) => {
@@ -59,6 +72,19 @@ export const setLoading = (state) => async (dispatch) => {
         dispatch(setLoadingSuccess(state));
     } catch (error) {
         dispatch(setLoadingFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        throw new Error(error);
+    }
+}
+
+export const setMode = (state) => async (dispatch) => {
+
+    dispatch(setModeRequest());
+
+    try {
+        dispatch(setModeSuccess(state));
+    } catch (error) {
+        dispatch(setModeFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         throw new Error(error);
     }

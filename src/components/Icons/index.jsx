@@ -46,6 +46,18 @@ const icons = {
       />
     </svg>
   ),
+  Send_Dark: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+      <path d="M7.5 11L15.75 2.75" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M15.75 2.75L10.875 16.25C10.8421 16.3218 10.7893 16.3827 10.7228 16.4253C10.6563 16.468 10.579 16.4907 10.5 16.4907C10.421 16.4907 10.3437 16.468 10.2772 16.4253C10.2107 16.3827 10.1579 16.3218 10.125 16.25L7.49999 11L2.24999 8.375C2.17819 8.34209 2.11734 8.28926 2.07468 8.22279C2.03202 8.15631 2.00934 8.07899 2.00934 8C2.00934 7.92101 2.03202 7.84369 2.07468 7.77721C2.11734 7.71074 2.17819 7.65791 2.24999 7.625L15.75 2.75Z"
+        stroke="black"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
   User: (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
       <g clipPath="url(#clip0_2_71)">

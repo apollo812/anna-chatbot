@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
+import { useDispatch } from 'react-redux';
+import { setMode } from '../../redux/globalReducer';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -52,9 +54,23 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 function DarkMode() {
+  const dispatch = useDispatch();
+
+  const setDarkMode = () => {
+    if (localStorage.theme == 'dark') {
+      localStorage.theme = 'light';
+      document.documentElement.classList.remove('dark');
+      dispatch(setMode('light'));
+    } else if (localStorage.theme == 'light') {
+      localStorage.theme = 'dark';
+      document.documentElement.classList.add('dark');
+      dispatch(setMode('dark'));
+    }
+  };
+
   return (
     <Box sx={{ maxWidth: 120 }}>
-      <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />} />
+      <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked onClick={() => setDarkMode()} />} />
     </Box>
   );
 }
