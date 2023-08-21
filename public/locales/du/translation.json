@@ -10,5 +10,6 @@
     "option3": "Maak voor mij het beste cv",
     "option4": "Maak een marketingplan",
     "option5": "Speel steen, papier, schaar",
-    "option6": "Help me een inhoud te vertalen"
+    "option6": "Help me een inhoud te vertalen",
+    "server_error": "Server Fout"
 }

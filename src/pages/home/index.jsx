@@ -5,7 +5,9 @@ import './home.scss';
 import LanguageSelect from '../../components/LanguageSelect';
 import { useTranslation } from 'react-i18next';
 import DarkMode from '../../components/DarkMode';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendUserInput } from '../../redux/chatbotReducer';
+import { openSnackBar } from '../../redux/snackBarReducer';
 
 const options = [
   'Help me write a blog post',
@@ -20,6 +22,7 @@ const options = [
 const Home = () => {
   const { globalState } = useSelector((state) => state);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   // const [prompts, setPrompts] = React.useState([
   //   {
   //     label: 'Model: gpt-3.5-turbo',
@@ -46,6 +49,7 @@ const Home = () => {
   }, []);
 
   const [mode, setMode] = React.useState(globalState.mode);
+  const [user_input, setUserInput] = React.useState('');
 
   React.useEffect(() => {
     setMode(globalState.mode);
@@ -54,6 +58,25 @@ const Home = () => {
   React.useEffect(() => {
     setMode(globalState.mode);
   }, [globalState.mode]);
+
+  const keyDownHandler = (e) => {
+    if (e.key == 'Enter') {
+      clickSend();
+    }
+  };
+
+  const clickSend = async () => {
+    if (user_input != '') {
+      console.log(user_input);
+      const response = await dispatch(sendUserInput(user_input));
+
+      if (response == false) {
+        dispatch(openSnackBar({ message: t('server_error'), status: 'error' }));
+      } else {
+        console.log(response);
+      }
+    }
+  };
 
   return (
     <div className="home">
@@ -106,8 +129,15 @@ const Home = () => {
           <div className="input-container">
             <Icons icon="User" size={24} />
             <div className="input-form">
-              <input type="text" />
-              <Icons icon={mode == 'dark' ? 'Send' : 'Send_Dark'} size={18} />
+              <input
+                type="text"
+                value={user_input}
+                onChange={(e) => setUserInput(e.target.value)}
+                onKeyDown={(e) => keyDownHandler(e)}
+              />
+              <span className="cursor-pointer" onClick={() => clickSend()}>
+                <Icons icon={mode == 'dark' ? 'Send' : 'Send_Dark'} size={18} />
+              </span>
             </div>
           </div>
         </div>

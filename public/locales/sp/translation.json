@@ -10,5 +10,6 @@
     "option3": "Create me the best resume",
     "option4": "Create a Marketing plan",
     "option5": "Play Rock, Paper, Scissors",
-    "option6": "Help me translate a content"
+    "option6": "Help me translate a content",
+    "server_error": "Server Error"
 }
