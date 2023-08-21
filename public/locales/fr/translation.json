@@ -11,5 +11,6 @@
     "option4": "Create a Marketing plan",
     "option5": "Play Rock, Paper, Scissors",
     "option6": "Help me translate a content",
-    "server_error": "Server Error"
+    "server_error": "Server Error",
+    "you": "You"
 }

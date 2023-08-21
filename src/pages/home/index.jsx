@@ -50,6 +50,7 @@ const Home = () => {
 
   const [mode, setMode] = React.useState(globalState.mode);
   const [user_input, setUserInput] = React.useState('');
+  const [history, setHistory] = React.useState([]);
 
   React.useEffect(() => {
     setMode(globalState.mode);
@@ -68,13 +69,33 @@ const Home = () => {
   const clickSend = async () => {
     if (user_input != '') {
       console.log(user_input);
+      setUserInput('');
+
+      const userMsg = {
+        type: 'user',
+        msg: user_input
+      };
+
+      let tmp_history = history;
+      tmp_history = [...tmp_history, { ...userMsg }];
+      setHistory([...tmp_history]);
+
       const response = await dispatch(sendUserInput(user_input));
 
       if (response == false) {
         dispatch(openSnackBar({ message: t('server_error'), status: 'error' }));
       } else {
         console.log(response);
+        const botMsg = {
+          type: 'bot',
+          msg: response.result
+        };
+
+        tmp_history = [...tmp_history, { ...botMsg }];
+        setHistory([...tmp_history]);
       }
+
+      console.log('history', tmp_history);
     }
   };
 
@@ -92,20 +113,31 @@ const Home = () => {
           <DarkMode />
           <LanguageSelect />
         </div>
-        <div className="assist-section">
-          <h1>
-            <span className="dark:text-[#E2E8F0] text-black">{t('Chat with')}</span>
-            <span className="dark:text-[#70c9df] text-[#205866]">{t('Azull')}</span>
-          </h1>
-          <div className="option-container">
-            <p className="!text-black dark:!text-[#E2E8F0] ">{t('or_try_asking')}</p>
-            <div className="option-group">
-              {options.map((item, ind) => {
-                return <div key={ind}>{t(`option${ind}`)}</div>;
-              })}
+        {history.length == 0 ? (
+          <div className="assist-section">
+            <h1>
+              <span className="dark:text-[#E2E8F0] text-black">{t('Chat with')}</span>
+              <span className="dark:text-[#70c9df] text-[#205866]">{t('Azull')}</span>
+            </h1>
+            <div className="option-container">
+              <p className="!text-black dark:!text-[#E2E8F0] ">{t('or_try_asking')}</p>
+              <div className="option-group">
+                {options.map((item, ind) => {
+                  return <div key={ind}>{t(`option${ind}`)}</div>;
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="history">
+            {history.map((data, index) => (
+              <div className="message_item" key={index}>
+                <p className="message_type">{data.type == 'user' ? t('you') : 'Anna'}:</p>
+                <p>{data.msg}</p>
+              </div>
+            ))}
+          </div>
+        )}
         <div className="sender-section">
           {/* <div className="prompt-options">
             {prompts.map((item, ind) => {
