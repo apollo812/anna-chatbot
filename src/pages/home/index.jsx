@@ -132,7 +132,7 @@ const Home = () => {
           <div className="history">
             {history.map((data, index) => (
               <div className="message_item" key={index}>
-                <p className="message_type">{data.type == 'user' ? t('you') : 'Anna'}:</p>
+                <p>{data.type == 'user' ? t('you') : 'Anna'}:</p>
                 <p>{data.msg}</p>
               </div>
             ))}

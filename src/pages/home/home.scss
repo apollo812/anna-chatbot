@@ -39,8 +39,8 @@
       
       .message_item {
         @apply flex text-white p-20;
-
-        .message_type {
+        
+        > p:first-child {
           @apply w-60 font-[700];
         }
       }
